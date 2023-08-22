@@ -1,0 +1,74 @@
+.qa-sideflex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    padding: 0 2rem;
+
+    margin-top: 1rem;
+}
+
+.qa-sideflex > .qa-card {
+    flex: 3 1 0;
+}
+
+.qa-sideflex > .qa-sidebar {
+    flex: 1 1 0;
+}
+
+.qa-sidebar .qa-thesis, .qa-sidebar a.qa-thesis {
+    margin: 1rem;
+    font-weight: var(--bold-weight);
+}
+
+.qa-sidebar .qa-thesis.inactive {
+    font-weight: var(--normal-weight);
+    cursor: default;
+}
+
+.qa-sidebar .qa-thesis.inactive:hover {
+    background-color: transparent;
+}
+
+.qa-card {
+    padding: 1rem;
+    background-color: var(--secondary);
+}
+
+.qa-card .inactive {
+    display: none;
+}
+
+.qa-card, .qa-sidebar {
+    margin: .5rem;
+}
+
+.qa-answers {
+    margin-top: 0;
+    margin-bottom: 2rem;
+
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+
+    padding: 0;
+}
+
+.qa-answers > * {
+    padding: 1rem;
+    text-align: center;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--accent);
+    border-radius: 0;
+}
+
+.qa-answers > *:hover {
+    background-color: var(--primary);
+}
+
+div.qa-overview {
+    border-top: 2px solid var(--accent);
+}

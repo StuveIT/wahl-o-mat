@@ -1,0 +1,19 @@
+{
+  "name": "pant-o-mat",
+  "version": "0.0.1",
+  "description": "Wahl-o-Mat Klon für den Tag des Engagements an der Universität Konstanz",
+  "main": "server.js",
+  "scripts": {
+    "dev": "npx nodemon server.js"
+  },
+  "author": "Anton Pogrebnjak",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/site-head') %>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/filehost/css/qacard.css">
+
+    <script>
+        const answers = <%- JSON.stringify(answers) %>;
+    </script>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <main class="center-content">
+        <div class="qa-sideflex">
+            <div class="qa-card">
+                <h1>Übersicht</h1>
+                <p>Hier kannst du dir deine Antworten anschauen und Thesen, die du doppelt werten möchtest mit einem Sternchen versehen.</p>
+
+                <% for( let i = 0; i < theses.length; i++ ) { %>
+                    <div class="qa-overview">
+                        <h2 id="<%= "thesis-title-" + i %>"><%= theses[i].title %></h2>
+                        <p id="<%= "thesis-description-" + i %>"><%= theses[i].description %></p>
+                        
+                        <h3 id="<%= "thesis-answer-" + i %>">Deine Antwort:</h3>
+                        <% if (answers[i] === 1) { %>
+                            <p id="<%= "thesis-answer-" + i %>">Stimme zu</p>
+                        <% } else if (answers[i] === 0) { %>
+                            <p id="<%= "thesis-answer-" + i %>">Neutral</p>
+                        <% } else if (answers[i] === -1) { %>
+                            <p id="<%= "thesis-answer-" + i %>">Stimme nicht zu</p>
+                        <% } else { %>
+                            <p id="<%= "thesis-answer-" + i %>">These übersprungen</p>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

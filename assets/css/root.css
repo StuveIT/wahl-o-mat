@@ -1,0 +1,121 @@
+:root {
+    --text: #05151a;
+    --background: #ffffff;
+    --primary: #59C7EB;
+    --secondary: #A6E1F4;
+    --accent: #00A9E0;
+
+    --normal-weight: 300;
+    --bold-weight: 500;
+}
+
+body {
+    background-color: var(--background);
+    font-family: "Theinhardt", sans-serif;
+    color: var(--text);
+}
+
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-weight: var(--bold-weight);
+    font-size: large;
+}
+
+p, a, button, h1, h2, h3, h4, h5, h6, li, span {
+    color: var(--text);
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.site-header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+}
+
+.site-header nav ul li {
+    padding: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6, .site-header nav ul li a {
+    font-weight: var(--bold-weight);
+}
+
+.site-header nav * {
+    font-size: 1rem;
+}
+
+.site-header div.banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 0 1rem;
+
+    border-bottom: 1px solid #E1E2E5;
+}
+
+.site-header div.banner a {
+    font-size: 1.5rem;
+    border: none;
+}
+
+.logo-large {
+    display: block;
+    width: 14rem;
+}
+
+.logo-large img {
+    width: 100%;
+    height: auto;
+}
+
+.link-block {
+    transition: background-color 0.1s;
+
+    background-color: var(--primary);
+
+    display: block;
+    font-size: 1rem;
+    font-weight: var(--bold-weight);
+    line-height: 1.5;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+
+    width: 100%;
+
+    border: none;
+}
+
+.link-block:hover {
+    background-color: var(--secondary);
+}
+
+main {
+    font-weight: var(--normal-weight);
+    padding: 0 2rem 2rem 2rem;
+    line-height: 1.5;
+}
+
+main a, main button {
+    font-weight: var(--bold-weight);
+    border-bottom: 2px solid var(--accent);
+}
+
+main a:hover, main button:hover {
+    background-color: var(--primary);
+}
+
+main button, main a, main p, main h1, main h2, main h3, main h4, main h5, main h6 {
+    margin-bottom: 1rem;
+}
