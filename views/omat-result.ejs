@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/site-head') %>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/filehost/css/qacard.css">
+
+    <script>
+        const answers = <%- JSON.stringify(answers) %>;
+    </script>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <main>
+        <h1>Auswertung</h1>
+        <p>Hier wird die finale Auswertung abgebildet sein.</p>
+    </main>
+</body>
+</html>

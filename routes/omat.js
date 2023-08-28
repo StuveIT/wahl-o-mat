@@ -25,6 +25,10 @@ router.get('/', (req, res) => {
     res.render('omat', { title: TITLE, theses: theses, answers: [], current: 0 })
 });
 
+router.post('/overview', (req, res) => {
+    res.send('overview')
+});
+
 router.get('/overview/:answer', (req, res) => {
     const answerString = req.params.answer.split('');
     const answers = [];
@@ -49,5 +53,28 @@ router.get('/overview/:answer', (req, res) => {
     res.render('omat-overview', { title: TITLE, theses: theses, answers: answers })
 });
 
+router.get('/result/:answer', (req, res) => {
+    const answerString = req.params.answer.split('');
+    const answers = [];
+
+    for(let i = 0; i < answerString.length; i++) {
+        switch(answerString[i]) {
+            case '0':
+                answers[i] = -1;
+                break;
+            case '1':
+                answers[i] = 0;
+                break;
+            case '2':
+                answers[i] = 1;
+                break;
+            default:
+                answers[i] = null;
+                break;
+        }
+    }
+
+    res.render('omat-result', { title: TITLE, theses: theses, answers: answers })
+});
 
 module.exports = router

@@ -8,32 +8,53 @@
     <script>
         const answers = <%- JSON.stringify(answers) %>;
     </script>
+    <script src="/filehost/js/omat-overview-logic.js"></script>
 </head>
 <body>
     <%- include('partials/header') %>
     <main class="center-content">
         <div class="qa-sideflex">
+            <section class="qa-sidebar">
+                <h4>Alle Thesen</h5>
+                <ul class="qa-theses">
+                    <% for (let i = 0; i < theses.length; i++) { %>
+                        <li><button id="<%= "thesis-link-" + i %>" class="qa-thesis" onclick="setThesisCursor(<%= i %>)">These <%= i + 1 %></button></li>
+                    <% } %>
+                </ul>
+            </section>
+
             <div class="qa-card">
                 <h1>Übersicht</h1>
-                <p>Hier kannst du dir deine Antworten anschauen und Thesen, die du doppelt werten möchtest mit einem Sternchen versehen.</p>
+                <p>Hier kannst du dir deine Antworten anschauen. Markiere Thesen, die du in der Endwertung doppelt zählen möchtest.</p>
 
+                <div class="btn-box space-between">
+                    <button onclick="edit()">< Bearbeiten</button>
+                    <button onclick="finish()">Ergebnisse ></button>
+                </div>
                 <% for( let i = 0; i < theses.length; i++ ) { %>
-                    <div class="qa-overview">
-                        <h2 id="<%= "thesis-title-" + i %>"><%= theses[i].title %></h2>
-                        <p id="<%= "thesis-description-" + i %>"><%= theses[i].description %></p>
-                        
-                        <h3 id="<%= "thesis-answer-" + i %>">Deine Antwort:</h3>
-                        <% if (answers[i] === 1) { %>
-                            <p id="<%= "thesis-answer-" + i %>">Stimme zu</p>
-                        <% } else if (answers[i] === 0) { %>
-                            <p id="<%= "thesis-answer-" + i %>">Neutral</p>
-                        <% } else if (answers[i] === -1) { %>
-                            <p id="<%= "thesis-answer-" + i %>">Stimme nicht zu</p>
-                        <% } else { %>
-                            <p id="<%= "thesis-answer-" + i %>">These übersprungen</p>
-                        <% } %>
-                    </div>
+                    <label class="thesis-checkbox" for="<%= "thesis-checkbox-" + i %>">
+                        <input type="checkbox" id="<%= "thesis-checkbox-" + i %>" class="qa-thesis-checkbox">
+                        <span class="checkmark"></span>
+
+                        <div class="thesis-overview">
+                            <h3 id="<%= "thesis-title-" + i %>"><%= theses[i].title %></h3>
+                            <p id="<%= "thesis-description-" + i %>"><%= theses[i].description %></p>
+                            <% if (answers[i] === 1) { %>
+                                <small id="<%= "thesis-answer-" + i %>">Stimme zu</small>
+                            <% } else if (answers[i] === 0) { %>
+                                <small id="<%= "thesis-answer-" + i %>">Neutral</small>
+                            <% } else if (answers[i] === -1) { %>
+                                <small id="<%= "thesis-answer-" + i %>">Stimme nicht zu</small>
+                            <% } else { %>
+                                <small id="<%= "thesis-answer-" + i %>">These übersprungen</small>
+                            <% } %>
+                        </div>
+                    </label>
                 <% } %>
+                <div class="btn-box space-between">
+                    <button onclick="edit()">< Bearbeiten</button>
+                    <button onclick="finish()">Ergebnisse ></button>
+                </div>
             </div>
         </div>
     </main>

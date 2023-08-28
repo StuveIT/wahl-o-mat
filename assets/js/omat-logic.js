@@ -10,6 +10,7 @@ function updateAnswer(answer) {
 }
 
 function updateThesis() {
+    // thesis title and description
     if(lastCursor !== null) {
         const oldTitle = document.getElementById("thesis-title-" + lastCursor);
         const oldDescription = document.getElementById("thesis-description-" + lastCursor);
@@ -23,6 +24,29 @@ function updateThesis() {
 
     newTitle.classList.remove("inactive");
     newDescription.classList.remove("inactive");
+
+    // thesis buttons
+    const positiveButton = document.getElementById("positive");
+    const neutralButton = document.getElementById("neutral");
+    const negativeButton = document.getElementById("negative");
+
+    if (answers[thesisCursor] == -1) {
+        positiveButton.classList.remove("selected");
+        neutralButton.classList.remove("selected");
+        negativeButton.classList.add("selected");
+    } else if (answers[thesisCursor] == 0) {
+        positiveButton.classList.remove("selected");
+        neutralButton.classList.add("selected");
+        negativeButton.classList.remove("selected");
+    } else if (answers[thesisCursor] == 1) {
+        positiveButton.classList.add("selected");
+        neutralButton.classList.remove("selected");
+        negativeButton.classList.remove("selected");
+    } else {
+        positiveButton.classList.remove("selected");
+        neutralButton.classList.remove("selected");
+        negativeButton.classList.remove("selected");
+    }
 }
 
 function nextThesis() {
@@ -51,15 +75,6 @@ function setThesisCursor(cursor) {
 }
 
 async function loadOverview() {
-    /* const response = await fetch("/omat/overview", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(answers)
-    });
-    const html = await response.text();
-    document.body.innerHTML = html; */
     let answerString = "";
     answers.forEach((answer, index) => {
         if(answer !== null)
@@ -69,4 +84,12 @@ async function loadOverview() {
     });
 
     location.href = "/omat/overview/" + answerString;
+    /* fetch('/omat/overview/', { method: 'POST', redirect: 'follow', data: { answers: answers } })
+    .then(response => {
+        // HTTP 301 response
+    })
+    .catch(function(err) {
+        console.info(err + " url: " + url);
+    }); */
+
 }
