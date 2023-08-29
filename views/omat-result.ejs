@@ -6,14 +6,18 @@
     <link rel="stylesheet" href="/filehost/css/qacard.css">
 
     <script>
-        const answers = <%- JSON.stringify(answers) %>;
+        const appAnswers = <%- JSON.stringify(answers) %>;
+        const appWeights = <%- JSON.stringify(weights) %>;
     </script>
+    <script src="/filehost/js/omat-result-logic.js"></script>
 </head>
 <body>
     <%- include('partials/header') %>
     <main>
         <h1>Auswertung</h1>
         <p>Hier wird die finale Auswertung abgebildet sein.</p>
+
+        <div id="output"></div>
     </main>
 </body>
 </html>

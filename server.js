@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const omatRouter = require('./routes/omat');
+const apiRouter = require('./routes/api');
 
 // dotenv
 require('dotenv').config();
@@ -24,7 +25,8 @@ app.get('/about', (req, res) => {
 });
 
 // omat
-app.use('/omat', omatRouter)
+app.use('/omat', omatRouter);
+app.use('/api', apiRouter);
 
 // listen
 app.listen(PORT, () => {

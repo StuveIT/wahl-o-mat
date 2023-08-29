@@ -22,43 +22,34 @@ const theses = [
 ]
 
 router.get('/', (req, res) => {
-    res.render('omat', { title: TITLE, theses: theses, answers: [], current: 0 })
-});
+    const answers = convertAnswerString(req.query.edit);
 
-router.post('/overview', (req, res) => {
-    res.send('overview')
-});
+    res.render('omat', { title: TITLE, theses: theses, answers: answers, current: 0 })
+})
 
-router.get('/overview/:answer', (req, res) => {
-    const answerString = req.params.answer.split('');
-    const answers = [];
-    
-    for(let i = 0; i < answerString.length; i++) {
-        switch(answerString[i]) {
-            case '0':
-                answers[i] = -1;
-                break;
-            case '1':
-                answers[i] = 0;
-                break;
-            case '2':
-                answers[i] = 1;
-                break;
-            default:
-                answers[i] = null;
-                break;
-        }
-    }
+router.get('/overview', (req, res) => {
+    const answers = convertAnswerString(req.query.edit);
     
     res.render('omat-overview', { title: TITLE, theses: theses, answers: answers })
 });
 
-router.get('/result/:answer', (req, res) => {
-    const answerString = req.params.answer.split('');
-    const answers = [];
+router.get('/result', (req, res) => {
+    const answers = convertAnswerString(req.query.answers);
+    const weights = convertWeights(req.query.weights);
+    console.log(weights)
 
-    for(let i = 0; i < answerString.length; i++) {
-        switch(answerString[i]) {
+    res.render('omat-result', { title: TITLE, theses: theses, answers: answers, weights: weights })
+});
+
+function convertAnswerString(answerString) {
+    if(answerString == null)
+        return [];
+
+    const string = answerString.split('');
+    const answers = [];
+    
+    for(let i = 0; i < string.length; i++) {
+        switch(string[i]) {
             case '0':
                 answers[i] = -1;
                 break;
@@ -74,7 +65,28 @@ router.get('/result/:answer', (req, res) => {
         }
     }
 
-    res.render('omat-result', { title: TITLE, theses: theses, answers: answers })
-});
+    return answers;
+}
+
+function convertWeights(weightsString) {
+    if(weightsString == null)
+        return []
+
+    const string = weightsString.split('');
+    const weigths = []
+
+    for (let i = 0; i < string.length; i++) {
+        switch(string[i]) {
+            case '1':
+                weigths[i] = 1;
+                break;
+            default:
+                weigths[i] = 0;
+                break;
+        }
+    }
+
+    return weigths;
+}
 
 module.exports = router

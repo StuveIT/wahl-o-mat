@@ -83,13 +83,5 @@ async function loadOverview() {
             answerString += "-";
     });
 
-    location.href = "/omat/overview/" + answerString;
-    /* fetch('/omat/overview/', { method: 'POST', redirect: 'follow', data: { answers: answers } })
-    .then(response => {
-        // HTTP 301 response
-    })
-    .catch(function(err) {
-        console.info(err + " url: " + url);
-    }); */
-
+    location.href = "/omat/overview?edit=" + answerString;
 }
