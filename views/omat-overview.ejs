@@ -18,7 +18,7 @@
                 <h4>Alle Thesen</h5>
                 <ul class="qa-theses">
                     <% for (let i = 0; i < theses.length; i++) { %>
-                        <li><button id="<%= "thesis-link-" + i %>" class="qa-thesis" onclick="setThesisCursor(<%= i %>)">These <%= i + 1 %></button></li>
+                        <li><button id="<%= "thesis-link-" + i %>" onclick="edit(<%= i %>)" class="qa-thesis" onclick="setThesisCursor(<%= i %>)">These <%= i + 1 %></button></li>
                     <% } %>
                 </ul>
             </section>

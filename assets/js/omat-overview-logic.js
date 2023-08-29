@@ -1,5 +1,8 @@
-function edit() {
-    location.href = "/omat?edit=" + answersToString();
+function edit(thesisNumber) {
+    if(thesisNumber !== null && thesisNumber !== undefined)
+        location.href = "/omat?edit=" + answersToString() + "&thesis=" + (thesisNumber + 1);
+    else
+        location.href = "/omat?edit=" + answersToString();
 }
 
 async function finish() {

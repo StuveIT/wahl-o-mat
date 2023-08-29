@@ -4,6 +4,7 @@
     <%- include('partials/site-head') %>
     <title><%= title %></title>
     <link rel="stylesheet" href="/filehost/css/qacard.css">
+    <% if (current === undefined || !Number.isInteger(current) || current < 0 || current >= answers.length) { current = 0; } %>
 
     <script>
         const theses = <%- JSON.stringify(theses) %> ? <%- JSON.stringify(theses) %> : [];
@@ -23,7 +24,7 @@
                 <h4>Alle Thesen</h5>
                 <ul class="qa-theses">
                     <% for (let i = 0; i < theses.length; i++) { %>
-                        <% if (i == 0) { %>
+                        <% if (i == current) { %>
                             <li><button id="<%= "thesis-link-" + i %>" class="qa-thesis inactive" onclick="setThesisCursor(<%= i %>)">These <%= i + 1 %></button></li>
                         <% } else { %>
                             <li><button id="<%= "thesis-link-" + i %>" class="qa-thesis" onclick="setThesisCursor(<%= i %>)">These <%= i + 1 %></button></li>
@@ -32,26 +33,26 @@
                 </ul>
             </section>
             <div class="qa-card">
-                <% for( let i = 0; i < theses.length; i++ ) { %>
-                    <% if (i === 0) { %>
-                        <h2 id="<%= "thesis-title-" + i %>"><%= i + 1 %>/<%= theses.length %> - <%= theses[i].title %></h2>
-                        <p id="<%= "thesis-description-" + i %>"><%= theses[i].description %></p>
-                    <% } else { %>
-                        <h2 id="<%= "thesis-title-" + i %>" class="inactive"><%= i + 1 %>/<%= theses.length %> - <%= theses[i].title %></h2>
-                        <p id="<%= "thesis-description-" + i %>" class="inactive"><%= theses[i].description %></p>
+                <div class="qa-grid">
+                    <% for( let i = 0; i < theses.length; i++ ) { %>
+                        <div class="qa-card-thesis <% if (i !== current) { %>inactive<% } %>" id="<%= "qa-thesis-" + i %>">
+                            <h2 id="<%= "thesis-title-" + i %>"><%= i + 1 %>/<%= theses.length %> - <%= theses[i].title %></h2>
+                            <p id="<%= "thesis-description-" + i %>"><%= theses[i].description %></p>
+                        </div>
                     <% } %>
-                <% } %>
+
+                </div>
                 
                 <small>Wähle eine Antwortmöglichkeit aus:</small>
                 
                 <div class="qa-answers">
-                    <button onclick="answer(1)" class="qa-answer-btn <% if (answers[0] == 1) { %>
+                    <button onclick="answer(1)" class="qa-answer-btn <% if (answers[current] == 1) { %>
                         selected
                     <% } %>" id="positive">Stimme zu</button>
-                    <button onclick="answer(0)" class="qa-answer-btn <% if (answers[0] == 0) { %>
+                    <button onclick="answer(0)" class="qa-answer-btn <% if (answers[current] == 0) { %>
                         selected
                     <% } %>" id="neutral">Neutral</button>
-                    <button onclick="answer(-1)" class="qa-answer-btn <% if (answers[0] == -1) { %>
+                    <button onclick="answer(-1)" class="qa-answer-btn <% if (answers[current] == -1) { %>
                         selected
                     <% } %>" id="negative">Stimme nicht zu</button>
                 </div>

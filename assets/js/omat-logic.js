@@ -12,18 +12,14 @@ function updateAnswer(answer) {
 function updateThesis() {
     // thesis title and description
     if(lastCursor !== null) {
-        const oldTitle = document.getElementById("thesis-title-" + lastCursor);
-        const oldDescription = document.getElementById("thesis-description-" + lastCursor);
+        const oldThesis = document.getElementById("qa-thesis-" + lastCursor);
 
-        oldTitle.classList.add("inactive");
-        oldDescription.classList.add("inactive");
+        oldThesis.classList.add("inactive");
     }
 
-    const newTitle = document.getElementById("thesis-title-" + thesisCursor);
-    const newDescription = document.getElementById("thesis-description-" + thesisCursor);
+    const newThesis = document.getElementById("qa-thesis-" + thesisCursor);
 
-    newTitle.classList.remove("inactive");
-    newDescription.classList.remove("inactive");
+    newThesis.classList.remove("inactive");
 
     // thesis buttons
     const positiveButton = document.getElementById("positive");

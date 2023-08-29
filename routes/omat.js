@@ -23,8 +23,11 @@ const theses = [
 
 router.get('/', (req, res) => {
     const answers = convertAnswerString(req.query.edit);
+    const thesisNumber = Number.parseInt(req.query.thesis) - 1;
 
-    res.render('omat', { title: TITLE, theses: theses, answers: answers, current: 0 })
+    console.log(thesisNumber)
+
+    res.render('omat', { title: TITLE, theses: theses, answers: answers, current: thesisNumber })
 })
 
 router.get('/overview', (req, res) => {
