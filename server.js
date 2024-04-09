@@ -13,7 +13,8 @@ const TITLE = process.env.TITLE || 'Pant-o-Mat';
         Application
 --------------------------- */
 app.set('view engine', 'ejs'); // view engine
-app.use('/filehost', express.static('assets')); // filehost
+app.use('/filehost', express.static('assets')); //filehost
+app.use('/data', express.static('data')); // filehost
 app.get('/robots.txt', (req, res) => res.sendFile('robots.txt', { root: './' })); // robots.txt
 
 app.get('/', (req, res) => {
