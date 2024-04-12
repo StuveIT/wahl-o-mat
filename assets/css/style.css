@@ -1,0 +1,279 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src:
+        url("/filehost/fonts/Ubuntu/Ubuntu-Regular.ttf");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src:
+        url("/filehost/fonts/Ubuntu/Ubuntu-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src:
+        url("/filehost/fonts/Ubuntu/Ubuntu-Italic.ttf");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src:
+        local('Ubuntu'),
+        url("/filehost/fonts/Ubuntu/Ubuntu-BoldItalic.ttf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+:root {
+    --normal-weight: 300;
+    --bold-weight: 600;
+
+    --border-radius: 5px;
+
+    --seperator: 1px solid var(--line-color);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.4rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 2rem;
+}
+
+main {
+    position: relative;
+    width: 60vw;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    text-wrap: wrap;
+}
+
+p, a, button, h1, h2, h3, h4, h5, h6, li, span {
+    color: var(--text);
+}
+
+p ~ h1, p ~ h2 {
+    margin-top: 3rem;
+    margin-bottom: .8rem;
+}
+
+p ~ h3, p ~ h4 {
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+}
+
+p ~ h5, p ~ h6 {
+    margin-top: 1rem;
+    margin-bottom: .2rem;
+}
+
+h1 ~ p, h2 ~ p {
+    margin-top: .8rem;
+}
+
+h3 ~ p, h4 ~ p {
+    margin-top: .5rem;
+}
+
+h5 ~ p, h6 ~ p {
+    margin-top: .2rem;
+}
+
+p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+p, li, a {
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    font-size: 2rem;
+    color: var(--text);
+    margin: 0 0.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a, button {
+    font-weight: var(--bold-weight);
+    border: none;
+    border-bottom: 2px solid var(--accent);
+}
+
+a:hover, button:hover {
+    background-color: var(--primary);
+}
+
+button, a, p {
+    margin-bottom: 1rem;
+}
+
+a.more {
+    margin: 2rem 0;
+    font-weight: var(--bold-weight);
+
+    background-color: var(--primary);
+    border-radius: 4px;
+    padding: 1rem 2rem;
+}
+
+a.more:hover {
+    box-shadow: 0 0 180px inset rgba(255, 255, 255, .1);
+}
+
+a.icon {
+    background-color: transparent;
+    border: none;
+}
+
+a.icon:hover {
+    background-color: transparent;
+}
+
+.card {
+    border-radius: var(--border-radius);
+    padding: 2em;
+    margin: 1em;
+    box-shadow: var(--standard-box-shadow);
+}
+
+.card > h1, .card > h2, .card > h3, .card > h4, .card > h5, .card > h6 {
+    margin-top: 0;
+}
+
+.uni-logo {
+    width: 100%;
+    height: auto;
+}
+
+.link-block {
+    transition: background-color 0.1s;
+
+    background-color: var(--primary);
+
+    display: block;
+    font-weight: var(--bold-weight);
+    line-height: 1.5;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+
+    width: 100%;
+
+    border: none;
+}
+
+.link-block:hover {
+    background-color: var(--secondary);
+}
+
+#options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2rem;
+
+    padding: 0 2em;
+}
+
+#options > * {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--primary);
+    border: none;
+    border-radius: var(--border-radius);
+
+    text-align: center;
+
+    margin: 1rem 0;
+    
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    
+    padding: 1rem;
+    margin: 0;
+}
+
+#options > *:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+}
+
+.path {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 .8rem;
+
+    border-bottom: var(--seperator);
+
+    margin-bottom: 1rem;
+}
+
+.path > a {
+    margin: 0;
+    padding: 4px 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin: 2rem 1rem;
+}
+
+form * {
+    width: 100%;
+}
+
+form input[type=submit] {
+    margin-top: 1rem;
+}

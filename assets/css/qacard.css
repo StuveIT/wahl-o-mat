@@ -18,15 +18,20 @@
 }
 
 .qa-sideflex > .qa-card {
-    flex: 3 1 0;
+    flex: 4 1 0;
 }
 
 .qa-sideflex > .qa-sidebar {
     flex: 1 1 0;
 }
 
+.qa-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 .qa-sidebar .qa-thesis, .qa-sidebar a.qa-thesis {
-    margin: 1rem;
+    margin: .2rem 0 .2rem 1rem;
     font-weight: var(--bold-weight);
 }
 
@@ -79,7 +84,7 @@
     padding: 0;
 }
 
-.qa-answers > .qa-answer-btn {
+.qa-answers > .qa-answer-btn, .qa-sidebar .qa-thesis {
     padding: 1rem;
     text-align: center;
 
@@ -93,53 +98,8 @@
     background-color: var(--accent);
 }
 
-.qa-answers > .qa-answer-btn:hover {
+.qa-answers > .qa-answer-btn:hover, .qa-sidebar .qa-thesis:hover {
     background-color: var(--primary);
-}
-
-.thesis-checkbox {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-
-    padding: 0 2rem;
-}
-
-.thesis-checkbox > input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.checkmark {
-    border: 2px solid var(--accent);
-    background-color: var(--secondary);
-    height: 1.5rem;
-    width: 1.5rem;
-
-    margin: 4px 1rem 0 0;
-}
-
-.thesis-checkbox > input[type="checkbox"]:checked ~ .checkmark {
-    background-color: var(--accent);
-}
-
-.thesis-checkbox > input[type="checkbox"]:checked ~ .checkmark::after {
-    display: block;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    content: '2x';
-}
-
-.thesis-checkbox:hover input ~ .checkmark {
-    background-color: var(--primary-dim);
-}
-
-.thesis-checkbox:hover input:checked ~ .checkmark {
-    background-color: var(--accent-light);
 }
 
 .thesis-overview {

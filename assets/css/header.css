@@ -1,0 +1,41 @@
+.site-header {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--background);
+    z-index: 9999;
+
+    width: 100%;
+}
+
+.site-header .banner .title {
+    font-size: 2rem;
+    font-weight: var(--bold-weight);
+}
+
+.site-header div.banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 0 1rem;
+
+    border-bottom: var(--seperator);
+}
+
+.site-header div.banner a {
+    font-size: 1.5rem;
+    border: none;
+}
+
+.logo-large {
+    display: block;
+    width: 14rem;
+    fill: var(--text);
+
+    padding: 8px;
+}
+
+a#header-logo:hover {
+    background-color: transparent;
+}

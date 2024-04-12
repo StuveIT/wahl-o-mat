@@ -1,0 +1,189 @@
+input, textarea, div.dropdown {
+    border: 2px solid #ccc;
+    border-radius: var(--border-radius);
+    background-color: var(--background);
+    
+    color: var(--text);
+
+    padding: 1rem;
+
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+}
+
+button {
+    border: 2px solid var(--secondary);
+    border-radius: var(--border-radius);
+
+    background-color: var(--primary);
+    padding: 1rem;
+    font-size: 1.2rem;
+
+    margin: 1rem 0;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--secondary);
+}
+
+div.dropdown {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+
+    min-width: 10rem;
+}
+
+div.dropdown:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+}
+
+div.dropdown button {
+    background-color: transparent;
+    border: none;
+    padding: 1rem;
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+div.dropdown button::after {
+    content: '▼';
+    margin-left: .5rem;
+}
+
+div.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+
+    width: 100%;
+    overflow-x: hidden;
+
+    background-color: var(--secondary);
+
+    border: 2px solid #ccc;
+    border-top: 0;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+
+    max-height: 50vh;
+    overflow-y: scroll;
+
+    z-index: 101;
+}
+
+div.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+div.dropdown .dropdown-content * {
+    display: block;
+    margin: 0;
+    width: 100%;
+    border: none;
+
+    overflow-x: hidden;
+}
+
+div.dropdown .dropdown-content * {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    padding: .5rem;
+
+    font-size: 1rem;
+    font-weight: var(--normal-weight);
+}
+
+div.dropdown .dropdown-content *:hover {
+    background-color: var(--primary);
+    cursor: pointer;
+}
+
+div.dropdown .dropdown-content *.selected, div.multiselect .dropdown-content > div:has(input:checked) {
+    background-color: var(--primary);
+}
+
+div.multiselect > .dropdown-content div {
+    display: flex;
+    flex-direction: row-reverse;
+    user-select: none;
+
+    justify-content: space-between;
+}
+
+div.multiselect input {
+    min-width: 1rem;
+    flex: 0;
+}
+
+div.multiselect label {
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+    user-select: none;
+    flex: 1;
+
+    font-weight: inherit;
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+
+    padding: 0 2rem;
+}
+
+.checkbox > input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    border: 2px solid var(--accent);
+    background-color: var(--secondary);
+    height: 1.8rem;
+    width: 1.8rem;
+
+    margin: 4px 1rem 0 0;
+}
+
+.checkbox > input[type="checkbox"]:checked ~ .checkmark {
+    background-color: var(--accent);
+}
+
+.checkbox > input[type="checkbox"]:checked ~ .checkmark::after {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    content: '2x';
+}
+
+.checkbox:hover input ~ .checkmark {
+    background-color: var(--primary);
+}
+
+.checkbox:hover input:checked ~ .checkmark {
+    background-color: var(--accent);
+}
+
+
+input ~ label {
+    margin-top: 8px;
+}
+
+.invalid {
+    color: red;
+}
+
+input.invalid {
+    border-color: red;
+}

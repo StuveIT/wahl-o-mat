@@ -2,33 +2,37 @@
 <html lang="en">
 <head>
     <%- include('partials/site-head') %>
-    <title><%= title %> - Über</title>
+    <title>Wahl-O-Mat - Über</title>
 </head>
 <body>
-    <%- include('partials/header', { title: "Über den " + title }) %>
+    <%- include('partials/header') %>
     <main>
-        <h1>Was ist der <%= title %>?</h1>
-        <p>
-            Der <%= title %> ist ein Tool, das Studierenden dabei helfen soll, sich ein Bild
-            von den Hochschulgruppen und -Gremien an der <a href="https://www.uni-kosntanz.de" target="_blank">Universität Konstanz</a>
-            zu verschaffen. Dazu werden die Positionen der Hochschulgruppen zu verschiedenen Themen abgefragt
-            und mit den Antworten der Nutzer*innen verglichen. So können die Nutzer*innen sehen, welche
-            Hochschulgruppen am besten zu ihnen passen könnten.
-        </p>
-
-        <h2>Wie funktioniert der <%= title %>?</h2>
-        <p>
-            Der <%= title %> funktioniert ähnlich wie der Wahl-O-Mat. Die Nutzer*innen beantworten eine Reihe von Thesen
-            mit "Stimme zu", "Neutral" oder "Stimme nicht zu". Die Thesen werden von den Hochschulgruppen selbst formuliert.
-            Die Nutzer*innen können sich die Thesen und die Positionen der Hochschulgruppen dazu anschauen und so eine
-            informierte Entscheidung treffen. Am Ende werden die Antworten der Nutzer*innen mit den Positionen der
-            Hochschulgruppen verglichen und die Nutzer*innen erhalten eine Übersicht, welche Hochschulgruppen am besten
-            zu ihnen passen könnten.
-        </p>
-        <p>
-            Zu keinem Zeitpunkt werden die Antworten der Nutzer*innen an einen Server gesendet; Die gesamte Berechnung
-            findet im Browser statt.
-        </p>
+        <div class="card">
+            <h1>Was ist der Wahl-O-Mat?</h1>
+            <p>
+                Der Wahl-O-Mat ist ein Tool, das Studierenden dabei helfen soll, sich ein Bild
+                von den Hochschulgruppen und -Gremien an der <a href="https://www.uni-kosntanz.de" target="_blank">Universität Konstanz</a>
+                zu verschaffen. Dazu werden die Positionen der Hochschulgruppen zu verschiedenen Themen abgefragt
+                und mit den Antworten der Nutzer*innen verglichen. So können die Nutzer*innen sehen, welche
+                Hochschulgruppen am besten zu ihnen passen könnten.
+            </p>
+    
+            <h2>Wie funktioniert der Wahl-O-Mat?</h2>
+            <p>
+                Der Wahl-O-Mat funktioniert ähnlich wie der Wahl-O-Mat. Die Nutzer*innen beantworten eine Reihe von Thesen
+                mit "Stimme zu", "Neutral" oder "Stimme nicht zu". Die Thesen werden von den Hochschulgruppen selbst formuliert.
+                Die Nutzer*innen können sich die Thesen und die Positionen der Hochschulgruppen dazu anschauen und so eine
+                informierte Entscheidung treffen. Am Ende werden die Antworten der Nutzer*innen mit den Positionen der
+                Hochschulgruppen verglichen und die Nutzer*innen erhalten eine Übersicht, welche Hochschulgruppen am besten
+                zu ihnen passen könnten.
+            </p>
+            <p>
+                Zu keinem Zeitpunkt werden die Antworten der Nutzer*innen an einen Server gesendet; Die gesamte Berechnung
+                findet im Browser statt.
+            </p>
+        </div>
     </main>
+    
+    <%- include('partials/footer') %>
 </body>
 </html>

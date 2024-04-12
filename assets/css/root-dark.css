@@ -1,0 +1,11 @@
+:root {
+    --text: #ffffff;
+    --background: #05151a;
+    --primary: #0096c8;
+    --secondary: #5bb0cc;
+    --accent: #4cb0d1;
+
+    --line-color: #3a3a3a;
+
+    --standard-box-shadow: 0 0 182px 0px rgba(255, 255, 255, .2);
+}

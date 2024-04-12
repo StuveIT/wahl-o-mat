@@ -1,0 +1,15 @@
+@media screen and (max-width: 1200px) {
+    input, textarea, div.dropdown {
+        border: 2px solid #ccc;
+        border-radius: var(--border-radius);
+        background-color: var(--background);
+    
+        padding: .4rem;
+    
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    div.dropdown {
+        min-width: 7vw;
+    }
+}
