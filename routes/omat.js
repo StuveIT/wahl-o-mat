@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 
 require('dotenv').config();
-const TITLE = process.env.TITLE || 'Pant-o-Mat';
 
 // Load theses
 const theses = [
@@ -25,20 +24,20 @@ router.get('/', (req, res) => {
     const answers = convertAnswerString(req.query.edit);
     const thesisNumber = Number.parseInt(req.query.thesis) - 1;
 
-    res.render('omat', { title: TITLE, theses: theses, answers: answers, current: thesisNumber })
+    res.render('omat', { theses: theses, answers: answers, current: thesisNumber })
 })
 
 router.get('/overview', (req, res) => {
     const answers = convertAnswerString(req.query.edit);
     
-    res.render('omat-overview', { title: TITLE, theses: theses, answers: answers })
+    res.render('omat-overview', { theses: theses, answers: answers })
 });
 
 router.get('/result', (req, res) => {
     const answers = convertAnswerString(req.query.answers);
     const weights = convertWeights(req.query.weights);
 
-    res.render('omat-result', { title: TITLE, theses: theses, answers: answers, weights: weights })
+    res.render('omat-result', { theses: theses, answers: answers, weights: weights })
 });
 
 function convertAnswerString(answerString) {

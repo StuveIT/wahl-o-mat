@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%- include('partials/site-head') %>
-    <title><%= title %></title>
+    <title>Wahl-O-Mat</title>
     <link rel="stylesheet" href="/filehost/css/qacard.css">
     <% if (current === undefined || !Number.isInteger(current) || current < 0 || current >= answers.length) { current = 0; } %>
 
@@ -18,7 +18,7 @@
 </head>
 <body>
     <%- include('partials/header') %>
-    <main class="center-content">
+    <main>
         <div class="qa-sideflex">
             <section class="qa-sidebar">
                 <h4>Alle Thesen</h5>
@@ -60,6 +60,7 @@
             </div>
         </div>
     </main>
+    <%- include('partials/footer') %>
 </body>
 <script src="/filehost/js/omat-logic.js"></script>
 </html>

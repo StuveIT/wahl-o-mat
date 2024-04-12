@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%- include('partials/site-head') %>
-    <title><%= title %></title>
+    <title>Wahl-O-Mat Übersicht</title>
     <link rel="stylesheet" href="/filehost/css/qacard.css">
 
     <script>
@@ -32,7 +32,7 @@
                     <button onclick="finish()">Ergebnisse ></button>
                 </div>
                 <% for( let i = 0; i < theses.length; i++ ) { %>
-                    <label class="thesis-checkbox" for="<%= "thesis-checkbox-" + i %>">
+                    <label class="checkbox" for="<%= "thesis-checkbox-" + i %>">
                         <input type="checkbox" id="<%= "thesis-checkbox-" + i %>" class="qa-thesis-checkbox">
                         <span class="checkmark"></span>
 
@@ -58,5 +58,6 @@
             </div>
         </div>
     </main>
+    <%- include('partials/footer') %>
 </body>
 </html>
