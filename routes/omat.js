@@ -1,64 +1,49 @@
 const express = require('express')
+const fs = require('fs')
+const { parse } = require('csv-parse/sync')
 const router = express.Router()
 
 require('dotenv').config();
-
-// Load theses
-const theses = [
-    {
-        title: 'These 1',
-        description: 'Hier könnte ihre These stehen!',
-    }, {
-        title: 'These 2',
-        description: 'Hier könnte ihre These stehen!',
-    }, {
-        title: 'These 3',
-        description: 'Hier könnte ihre These stehen!',
-    }, {
-        title: 'These 4',
-        description: 'Hier könnte ihre These stehen!',
-    },
-]
 
 router.get('/', (req, res) => {
     const answers = convertAnswerString(req.query.edit);
     const thesisNumber = Number.parseInt(req.query.thesis) - 1;
 
-    res.render('omat', { theses: theses, answers: answers, current: thesisNumber })
+    res.render('omat', { answers: answers, current: thesisNumber })
 })
 
 router.get('/overview', (req, res) => {
     const answers = convertAnswerString(req.query.edit);
     
-    res.render('omat-overview', { theses: theses, answers: answers })
+    res.render('omat-overview', { answers: answers })
 });
 
 router.get('/result', (req, res) => {
     const answers = convertAnswerString(req.query.answers);
     const weights = convertWeights(req.query.weights);
 
-    res.render('omat-result', { theses: theses, answers: answers, weights: weights })
+    res.render('omat-result', { answers: answers, weights: weights })
 });
 
 function convertAnswerString(answerString) {
     if(answerString == null)
-        return [];
+        return []
 
     const string = answerString.split('');
-    const answers = [];
-    
-    for(let i = 0; i < string.length; i++) {
+    const answers = []
+
+    for (let i = 0; i < string.length; i++) {
         switch(string[i]) {
-            case '0':
-                answers[i] = -1;
-                break;
-            case '1':
+            case '0': // positive
                 answers[i] = 0;
                 break;
-            case '2':
+            case '1': // neutral
                 answers[i] = 1;
                 break;
-            default:
+            case '2': // negative
+                answers[i] = 2;
+                break;
+            default: // skipped
                 answers[i] = null;
                 break;
         }
