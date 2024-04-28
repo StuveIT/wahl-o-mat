@@ -1,0 +1,59 @@
+.percentage {
+    box-sizing: border-box;
+
+    display: block;
+    padding: 1rem;
+    font-weight: var(--bold-weight);
+    background-color: var(--accent);
+}
+
+#result {
+    display: flex;
+    flex-direction: column;
+
+    max-height: 100%;
+    overflow: hidden;
+    transition: max-height 2s ease-in-out;
+}
+
+#result.loading {
+    max-height: 0;
+}
+
+#result > * {
+    flex: 1;
+}
+
+#result > div.party {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+#result > div.party > h3 {
+    margin: 0;
+    margin-bottom: .5rem;
+}
+
+div.percentage-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+div.percentage-container > span.percentage {
+    width: 0;
+
+    transition: width 2s;
+}
+
+div.percentage-container > p.percentage-text {
+    margin: 0;
+    font-weight: var(--bold-weight);
+    min-width: fit-content;
+    
+    text-wrap: nowrap;
+}
+
+

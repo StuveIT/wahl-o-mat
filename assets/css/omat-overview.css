@@ -1,0 +1,15 @@
+.checkbox {
+    padding: 1rem;
+}
+
+.checkbox.positive > .thesis-overview > small {
+    color: var(--positive);
+}
+
+.checkbox.negative > .thesis-overview > small {
+    color: var(--negative);
+}
+
+.checkbox.neutral > .thesis-overview > small {
+    color: var(--neutral);
+}

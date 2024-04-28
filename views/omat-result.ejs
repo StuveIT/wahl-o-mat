@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <%- include('partials/site-head') %>
     <title>Wahl-O-Mat Resultat</title>
     <link rel="stylesheet" href="/filehost/css/qacard.css">
+    <link rel="stylesheet" href="/filehost/css/omat-result.css">
 
     <script>
         const appAnswers = <%- JSON.stringify(answers) %>;
         const appWeights = <%- JSON.stringify(weights) %>;
     </script>
-    <script src="/filehost/js/omat-result-logic.js"></script>
 </head>
 <body>
     <%- include('partials/header') %>
     <main>
-        <h1>Auswertung</h1>
-        <p>Hier wird die finale Auswertung abgebildet sein.</p>
-
-        <div id="output"></div>
+        <div class="card">
+            <h1>Dein Wahl-O-Mat-Ergebnis</h1>
+            <div id="result">
+                <!-- Filled by script -->
+            </div>
+        </div>
     </main>
     <%- include('partials/footer') %>
 </body>
+<script src="/filehost/js/omat-result-logic.js"></script>
 </html>

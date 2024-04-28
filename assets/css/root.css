@@ -8,4 +8,8 @@
     --line-color: #E1E2E5;
 
     --standard-box-shadow: 0 0 182px 0px rgba(0, 0, 0, .2);
+
+    --positive: #00A9E0;
+    --negative: #FF0000;
+    --neutral: #424242;
 }
