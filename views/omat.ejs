@@ -7,13 +7,9 @@
     <% if (current === undefined || !Number.isInteger(current) || current < 0 || current >= answers.length) { current = 0; } %>
 
     <script>
-        const theses = <%- JSON.stringify(theses) %> ? <%- JSON.stringify(theses) %> : [];
         const answers = <%- JSON.stringify(answers) %> ? <%- JSON.stringify(answers) %> : [];
         let thesisCursor = <%- JSON.stringify(current) %> ? <%- JSON.stringify(current) %> : 0;
-
-        if (theses.length === 0) {
-            window.location.href = "/";
-        }
+        let theses = [];
     </script>
 </head>
 <body>
@@ -23,36 +19,24 @@
             <section class="qa-sidebar">
                 <h4>Alle Thesen</h5>
                 <ul class="qa-theses">
-                    <% for (let i = 0; i < theses.length; i++) { %>
-                        <% if (i == current) { %>
-                            <li><button id="<%= "thesis-link-" + i %>" class="qa-thesis inactive" onclick="setThesisCursor(<%= i %>)">These <%= i + 1 %></button></li>
-                        <% } else { %>
-                            <li><button id="<%= "thesis-link-" + i %>" class="qa-thesis" onclick="setThesisCursor(<%= i %>)">These <%= i + 1 %></button></li>
-                        <% } %>
-                    <% } %>
+                    <!-- Filled by script -->
                 </ul>
             </section>
             <div class="qa-card">
                 <div class="qa-grid">
-                    <% for( let i = 0; i < theses.length; i++ ) { %>
-                        <div class="qa-card-thesis <% if (i !== current) { %>inactive<% } %>" id="<%= "qa-thesis-" + i %>">
-                            <h2 id="<%= "thesis-title-" + i %>"><%= i + 1 %>/<%= theses.length %> - <%= theses[i].title %></h2>
-                            <p id="<%= "thesis-description-" + i %>"><%= theses[i].description %></p>
-                        </div>
-                    <% } %>
-
+                    <!-- Filled by script -->
                 </div>
                 
                 <small>Wähle eine Antwortmöglichkeit aus:</small>
                 
                 <div class="qa-answers">
-                    <button onclick="answer(1)" class="qa-answer-btn <% if (answers[current] == 1) { %>
-                        selected
-                    <% } %>" id="positive">Stimme zu</button>
                     <button onclick="answer(0)" class="qa-answer-btn <% if (answers[current] == 0) { %>
                         selected
+                    <% } %>" id="positive">Stimme zu</button>
+                    <button onclick="answer(1)" class="qa-answer-btn <% if (answers[current] == 1) { %>
+                        selected
                     <% } %>" id="neutral">Neutral</button>
-                    <button onclick="answer(-1)" class="qa-answer-btn <% if (answers[current] == -1) { %>
+                    <button onclick="answer(2)" class="qa-answer-btn <% if (answers[current] == 2) { %>
                         selected
                     <% } %>" id="negative">Stimme nicht zu</button>
                 </div>
