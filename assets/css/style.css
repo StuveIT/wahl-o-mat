@@ -61,6 +61,13 @@ body {
 main {
     position: relative;
     width: 60vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0 2rem;
+
 }
 
 footer {
@@ -76,6 +83,12 @@ h1, h2, h3, h4, h5, h6, p {
     overflow-wrap: break-word;
     text-overflow: ellipsis;
     text-wrap: wrap;
+
+    margin: 0;
+}
+
+h1 ~ *:not(h2), h2 ~ *:not(h3), h3 ~ *:not(h4), h4 ~ *:not(h5), h5 ~ *:not(h6) {
+    margin-top: 1.4rem;
 }
 
 p, a, button, h1, h2, h3, h4, h5, h6, li, span {

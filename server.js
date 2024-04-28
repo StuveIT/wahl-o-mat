@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     res.render('home')
 });
 
-app.get('/about', (req, res) => {
+app.get('/%C3%BCber', (req, res) => {
     res.render('about')
 });
 

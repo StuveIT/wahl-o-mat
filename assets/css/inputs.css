@@ -138,6 +138,10 @@ div.multiselect label {
     padding: 0 2rem;
 }
 
+.checkbox.inactive {
+    opacity: .5;
+}
+
 .checkbox > input[type="checkbox"] {
     position: absolute;
     opacity: 0;
@@ -155,11 +159,11 @@ div.multiselect label {
     margin: 4px 1rem 0 0;
 }
 
-.checkbox > input[type="checkbox"]:checked ~ .checkmark {
+.checkbox:not(.inactive) > input[type="checkbox"]:checked ~ .checkmark {
     background-color: var(--accent);
 }
 
-.checkbox > input[type="checkbox"]:checked ~ .checkmark::after {
+.checkbox:not(.inactive) > input[type="checkbox"]:checked ~ .checkmark::after {
     display: block;
     height: 100%;
     width: 100%;
@@ -167,11 +171,11 @@ div.multiselect label {
     content: '2x';
 }
 
-.checkbox:hover input ~ .checkmark {
+.checkboxi:not(.inactive):hover input ~ .checkmark {
     background-color: var(--primary);
 }
 
-.checkbox:hover input:checked ~ .checkmark {
+.checkbox:hover:not(.inactive) input:checked ~ .checkmark {
     background-color: var(--accent);
 }
 

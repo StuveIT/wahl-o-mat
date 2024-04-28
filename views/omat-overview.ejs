@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <%- include('partials/site-head') %>
     <title>Wahl-O-Mat Übersicht</title>
     <link rel="stylesheet" href="/filehost/css/qacard.css">
+    <link rel="stylesheet" href="/filehost/css/omat-overview.css">
 
     <script>
         const answers = <%- JSON.stringify(answers) %>;
@@ -13,7 +14,7 @@
 </head>
 <body>
     <%- include('partials/header') %>
-    <main class="center-content">
+    <main>
         <div class="qa-sideflex">
             <section class="qa-sidebar">
                 <h4>Alle Thesen</h5>
@@ -22,9 +23,9 @@
                 </ul>
             </section>
 
-            <div class="qa-card">
-                <h1>Übersicht</h1>
-                <p>Hier kannst du dir deine Antworten anschauen. Markiere Thesen, die du in der Endwertung doppelt zählen möchtest.</p>
+            <div class="qa card">
+                <h1>Gewichtung der Thesen</h1>
+                <p>Schau dir nochmal die Thesen an und markiere die Thesen, die mit doppelter Gewichtung ins Endergebnis einfließen sollen.</p>
 
                 <div class="btn-box space-between">
                     <button onclick="edit()">< Bearbeiten</button>

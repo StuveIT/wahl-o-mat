@@ -12,6 +12,7 @@ async function initTheses() {
 
             for (let i = 0; i < theses.length; i++) {
                 const thesis = theses[i];
+                const answer = answers[i];
 
                 // Create sidebar link
                 const thesisLink = document.createElement('button');
@@ -21,7 +22,7 @@ async function initTheses() {
                 thesisLink.classList.add('qa-thesis');
 
                 // -- Add text
-                thesisLink.textContent = `These ${i + 1}`;
+                thesisLink.textContent = i + 1 + ' ' + thesis.title;
 
                 // -- Add event listener
                 thesisLink.onclick = () => edit(i);
@@ -35,6 +36,18 @@ async function initTheses() {
 
                 // -- Add class
                 checkboxLabel.classList.add('checkbox');
+
+                if(answer === null) {
+                    checkboxLabel.classList.add('inactive');
+                }
+
+                if(answer === 0) {
+                    checkboxLabel.classList.add('positive');
+                } else if(answer === 1) {
+                    checkboxLabel.classList.add('neutral');
+                } else if(answer === 2) {
+                    checkboxLabel.classList.add('negative');
+                }
 
                 // -- Add for attribute
                 checkboxLabel.htmlFor = `thesis-checkbox-${i}`;
@@ -58,25 +71,20 @@ async function initTheses() {
                 checkboxTitle.id = `thesis-title-${i}`;
                 checkboxTitle.textContent = thesis.title;
 
-                const checkboxDescription = document.createElement('p');
-                checkboxDescription.id = `thesis-description-${i}`;
-                checkboxDescription.textContent = thesis.description;
-
                 const checkboxAnswer = document.createElement('small');
                 checkboxAnswer.id = `thesis-answer-${i}`;
 
-                if (answers[i] === 0) {
+                if (answer === 0) {
                     checkboxAnswer.textContent = 'Stimme zu';
-                } else if (answers[i] === 1) {
+                } else if (answer === 1) {
                     checkboxAnswer.textContent = 'Neutral';
-                } else if (answers[i] === 2) {
+                } else if (answer === 2) {
                     checkboxAnswer.textContent = 'Stimme nicht zu';
                 } else {
                     checkboxAnswer.textContent = 'These übersprungen';
                 }
 
                 thesisOverview.appendChild(checkboxTitle);
-                thesisOverview.appendChild(checkboxDescription);
                 thesisOverview.appendChild(checkboxAnswer);
 
                 // -- Append to checkbox label

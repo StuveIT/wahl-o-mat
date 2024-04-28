@@ -19,6 +19,9 @@ const valueGrid = [
 ]
 
 async function main() {
+    const resultContainer = document.getElementById('result');
+    resultContainer.classList.toggle('loading', true);
+
     let parties = await fetchParties();
     let theses = await fetchTheses();
 
@@ -50,11 +53,11 @@ async function main() {
             partyAnswer = theses[row][party.pid];
 
             // calculate the points for the user and party combination
-            pointGrid[row][col] = valueGrid[userAnswer][partyAnswer] * appWeights[row];
+            pointGrid[row][col] = valueGrid[userAnswer][partyAnswer] * (appWeights[row] + 1);
         }
 
         // add the max value for the user
-        pointGrid[row][parties.length] = 2 + 2 * appWeights[row];
+        pointGrid[row][parties.length] = 2 * (appWeights[row] + 1);
     }
 
     let lastRow = pointGrid.length - 1;
@@ -84,10 +87,9 @@ async function main() {
 
     // sort the parties by the percentage
     results.sort((a, b) => b.percentage - a.percentage);
-    console.log(results);
 
     // render results
-    const resultContainer = document.getElementById('output');
+
     results.forEach(result => {
         const party = result.party;
         const percentage = result.percentage;
@@ -95,22 +97,34 @@ async function main() {
         const partyContainer = document.createElement('div');
         partyContainer.classList.add('party');
 
-        const partyName = document.createElement('h2');
+        const partyName = document.createElement('h3');
         partyName.innerText = party.party;
         partyContainer.appendChild(partyName);
 
-        const partyDescription = document.createElement('p');
-        partyDescription.innerText = party.description;
-        partyContainer.appendChild(partyDescription);
+        const percentageContainer = document.createElement('div');
+        percentageContainer.classList.add('percentage-container');
 
-        const partyPercentage = document.createElement('span');
-        partyPercentage.classList.add('percentage');
-        partyPercentage.style.width = (percentage * 100) + '%';
-        partyPercentage.innerText = 'Übereinstimmung: ' + (percentage * 100) + '%';
-        partyContainer.appendChild(partyPercentage);
+        const percentageBar = document.createElement('span');
+        percentageBar.classList.add('percentage');
+        percentageBar.style.width = 0; // start with 0%
+        percentageContainer.appendChild(percentageBar);
+
+        const percentageText = document.createElement('p');
+        percentageText.classList.add('percentage-text');
+        percentageText.innerText = `${Math.round(percentage * 100)}%`;
+        percentageContainer.appendChild(percentageText);
+        
+        partyContainer.appendChild(percentageContainer);
 
         resultContainer.appendChild(partyContainer);
+
+        // animate the percentage bar
+        setTimeout(() => {
+            percentageBar.style.width = `${percentage * 100}%`;
+        }, 200);
     });
+
+    resultContainer.classList.toggle('loading', false);
 }
 
 main();

@@ -37,7 +37,7 @@ function initTheses() {
                 thesisLink.classList.remove("inactive");
             }
 
-            thesisLink.innerText = "These " + (i + 1);  // Set text
+            thesisLink.innerText = (i + 1) + " " + thesis.title;
             thesisLink.onclick = () => setThesisCursor(i); // Set click event
 
             // -- Append to sidebar
