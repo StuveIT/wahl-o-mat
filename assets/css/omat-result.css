@@ -11,28 +11,30 @@
     display: flex;
     flex-direction: column;
 
-    gap: 1rem;
+    gap: .2rem;
 }
 
 #result > * {
     flex: 1;
 }
 
-#result > div.party {
+#result > details.party {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 
-#result > div.party > h3 {
-    margin: 0;
-    margin-bottom: .5rem;
+#result > details.party > summary {
+    font-weight: var(--bold-weight);
+    font-size: 1.5rem;
+
+    cursor: pointer;
 }
 
 div.percentage-container {
     display: flex;
     flex-direction: row;
-    margin: 0;
+    margin: .5rem 0;
     gap: 1rem;
     justify-content: space-between;
 }
@@ -51,4 +53,53 @@ div.percentage-container > p.percentage-text {
     text-wrap: nowrap;
 }
 
+.vote-answer {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+}
 
+.vote-answer > * {
+    margin: 0;
+}
+
+.vote-answer.positive::before {
+    content: '';
+
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--positive);
+}
+
+.vote-answer.positive > p {
+    color: var(--positive);
+}
+
+.vote-answer.neutral:before {
+    content: ' ';
+
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--neutral);
+}
+
+.vote-answer.neutral > p {
+    color: var(--neutral);
+}
+
+.vote-answer.negative:before {
+    content: ' ';
+
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--negative);
+}
+
+.vote-answer.negative > p {
+    color: var(--negative);
+}
+
+.vote-reason {
+    font-size: 1.2rem;
+}

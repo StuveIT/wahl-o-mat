@@ -7,6 +7,7 @@ const apiRouter = require('./routes/api');
 // dotenv
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
+const TITLE = process.env.TITLE || 'Omat';
 
 /* ---------------------------
         Application
@@ -17,19 +18,19 @@ app.use('/data', express.static('data')); // filehost
 app.get('/robots.txt', (req, res) => res.sendFile('robots.txt', { root: './' })); // robots.txt
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.render('home', { title: TITLE })
 });
 
 app.get('/%C3%BCber', (req, res) => {
-    res.render('about')
+    res.render('about', { title: TITLE })
 });
 
 app.get('/datenschutz', (req, res) => {
-    res.render('datenschutz')
+    res.render('datenschutz', { title: TITLE })
 });
 
 app.get('/impressum', (req, res) => {
-    res.render('impressum')
+    res.render('impressum', { title: TITLE })
 });
 
 // omat

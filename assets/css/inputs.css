@@ -153,7 +153,9 @@ div.multiselect label {
 .checkmark {
     border: 2px solid var(--accent);
     background-color: var(--secondary);
+    min-height: 1.8rem;
     height: 1.8rem;
+    min-width: 1.8rem;
     width: 1.8rem;
 
     margin: 4px 1rem 0 0;
