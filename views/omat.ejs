@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <%- include('partials/site-head') %>
-    <title>Wahl-O-Mat</title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/filehost/css/qacard.css">
     <% if (current === undefined || !Number.isInteger(current) || current < 0 || current >= answers.length) { current = 0; } %>
 

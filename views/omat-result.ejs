@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <%- include('partials/site-head') %>
-    <title>Wahl-O-Mat Resultat</title>
+    <title><%= title %> Resultat</title>
     <link rel="stylesheet" href="/filehost/css/qacard.css">
     <link rel="stylesheet" href="/filehost/css/omat-result.css">
 
@@ -15,7 +15,9 @@
     <%- include('partials/header') %>
     <main>
         <div class="card">
-            <h1>Dein Wahl-O-Mat-Ergebnis</h1>
+            <h1>Dein <%= title %>-Ergebnis</h1>
+            Klicke auf die Parteien, um mehr über ihre Positionen zu erfahren.
+
             <div id="result">
                 <!-- Filled by script -->
             </div>

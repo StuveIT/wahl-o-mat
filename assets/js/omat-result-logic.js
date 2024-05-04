@@ -89,17 +89,21 @@ async function main() {
     results.sort((a, b) => b.percentage - a.percentage);
 
     // render results
-
     results.forEach(result => {
         const party = result.party;
         const percentage = result.percentage;
+        const votes = theses.map(thesis => {
+            return {
+                answer: thesis[party.pid],
+                reason: thesis[party.pid + '_text']
+            };
+        });
 
-        const partyContainer = document.createElement('div');
+        const partyContainer = document.createElement('details');
         partyContainer.classList.add('party');
 
-        const partyName = document.createElement('h3');
-        partyName.innerText = party.party;
-        partyContainer.appendChild(partyName);
+        const partySummary = document.createElement('summary');
+        partySummary.innerText = party.party;
 
         const percentageContainer = document.createElement('div');
         percentageContainer.classList.add('percentage-container');
@@ -114,7 +118,41 @@ async function main() {
         percentageText.innerText = `${Math.round(percentage * 100)}%`;
         percentageContainer.appendChild(percentageText);
         
-        partyContainer.appendChild(percentageContainer);
+        partySummary.appendChild(percentageContainer);
+
+        partyContainer.appendChild(partySummary);
+
+        votes.forEach((vote, index) => {
+            const voteContainer = document.createElement('div');
+            voteContainer.classList.add('vote');
+
+            const voteAnswer = document.createElement('div');
+            voteAnswer.classList.add('vote-answer');
+
+            const voteThesisTitle = document.createElement('h4');
+            voteThesisTitle.innerText = theses[index].title;
+            voteAnswer.appendChild(voteThesisTitle);
+            switch(Number(vote.answer)) {
+                case 0:
+                    voteAnswer.classList.add('positive');
+                    break;
+                case 1:
+                    voteAnswer.classList.add('neutral');
+                    break;
+                case 2:
+                    voteAnswer.classList.add('negative');
+                    break;
+            }
+
+            voteContainer.appendChild(voteAnswer);
+
+            const voteText = document.createElement('p');
+            voteText.classList.add('vote-reason');
+            voteText.innerText = vote.reason;
+            voteContainer.appendChild(voteText);
+
+            partyContainer.appendChild(voteContainer);
+        });
 
         resultContainer.appendChild(partyContainer);
 

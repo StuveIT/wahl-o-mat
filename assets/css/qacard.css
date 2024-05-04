@@ -11,6 +11,8 @@
 
 .qa-sideflex > .qa.card {
     flex: 4 1 0;
+    min-width: 400px;
+    overflow: hidden;
 }
 
 .qa-sideflex > .qa-sidebar {

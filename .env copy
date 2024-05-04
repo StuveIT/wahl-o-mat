@@ -1,1 +1,4 @@
 PORT=8080
+TITLE=Wahl-U-Mat
+THESES_FILE=data/thesen.csv
+PARTIES_FILE=data/listen.csv
