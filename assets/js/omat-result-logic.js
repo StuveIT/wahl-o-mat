@@ -128,7 +128,7 @@ async function main() {
 
             const voteAnswer = document.createElement('div');
             voteAnswer.classList.add('vote-answer');
-            
+
             const voteThesisTitle = document.createElement('h4');
             voteThesisTitle.innerText = theses[index].title;
             voteAnswer.appendChild(voteThesisTitle);
