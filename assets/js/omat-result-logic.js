@@ -79,10 +79,22 @@ async function main() {
         let sum = pointGrid[lastRow + 1][col];
         let max = pointGrid[lastRow + 1][parties.length];
 
+        // if user skipped all questions, the percentage should be 0
+        if (max === 0) {
+            sum = 0;
+            max = 1;
+        }
+
         results[col] = {
             party: parties[col],
             percentage: sum / max
         }
+    }
+
+    // if the user skipped all questions, let's certify their indecisiveness
+    if (pointGrid[lastRow + 1][parties.length] === 0) {
+        resultContainer.innerHTML = '<h2><center>Diagnose: meinungsfrei</center></h2>';
+        return;
     }
 
     // sort the parties by the percentage
@@ -92,6 +104,8 @@ async function main() {
     results.forEach(result => {
         const party = result.party;
         const percentage = result.percentage;
+        const percentageText = isNaN(percentage) ? 'Diagnose: meinungsfrei' : `${Math.round(percentage * 100)}%`;
+
         const votes = theses.map(thesis => {
             return {
                 answer: thesis[party.pid],
@@ -113,10 +127,10 @@ async function main() {
         percentageBar.style.width = 0; // start with 0%
         percentageContainer.appendChild(percentageBar);
 
-        const percentageText = document.createElement('p');
-        percentageText.classList.add('percentage-text');
-        percentageText.innerText = `${Math.round(percentage * 100)}%`;
-        percentageContainer.appendChild(percentageText);
+        const percentagePara = document.createElement('p');
+        percentagePara.classList.add('percentage-text');
+        percentagePara.innerText = percentageText;
+        percentageContainer.appendChild(percentagePara);
         
         partySummary.appendChild(percentageContainer);
 
