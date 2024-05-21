@@ -2,16 +2,39 @@
     box-sizing: border-box;
 
     display: block;
-    padding: 1rem;
+    padding: 1em;
     font-weight: var(--bold-weight);
     background-color: var(--accent);
+}
+
+div.card {
+    width: 100%;
+}
+
+div.card > div.card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+}
+
+div.card-header-buttons {
+    margin: 0;
+}
+
+p.card-description {
+    margin: .4em 0;
+}
+
+.share-button {
+    margin: 0;
 }
 
 #result {
     display: flex;
     flex-direction: column;
 
-    gap: .2rem;
+    gap: .2em;
 }
 
 #result > * {
@@ -21,12 +44,12 @@
 #result > details.party {
     display: flex;
     flex-direction: column;
-    margin-bottom: .5rem;
+    margin-bottom: .5em;
 }
 
 #result > details.party > summary {
     font-weight: var(--bold-weight);
-    font-size: 1.5rem;
+    font-size: 1.2em;
 
     cursor: pointer;
 }
@@ -34,8 +57,8 @@
 div.percentage-container {
     display: flex;
     flex-direction: row;
-    margin: .5rem 0;
-    gap: 1rem;
+    margin: .5em 0;
+    gap: 1em;
     justify-content: space-between;
 }
 
@@ -56,7 +79,7 @@ div.percentage-container > p.percentage-text {
 .vote-answer {
     display: flex;
     flex-direction: row;
-    gap: .5rem;
+    gap: .5em;
     align-items: center;
 }
 
@@ -67,8 +90,8 @@ div.percentage-container > p.percentage-text {
 .vote-answer.positive::before {
     content: '';
 
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.5em;
+    height: 1.5em;
     background-color: var(--positive);
 }
 
@@ -79,8 +102,8 @@ div.percentage-container > p.percentage-text {
 .vote-answer.neutral:before {
     content: ' ';
 
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.5em;
+    height: 1.5em;
     background-color: var(--neutral);
 }
 
@@ -91,8 +114,8 @@ div.percentage-container > p.percentage-text {
 .vote-answer.negative:before {
     content: ' ';
 
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.5em;
+    height: 1.5em;
     background-color: var(--negative);
 }
 
@@ -101,5 +124,5 @@ div.percentage-container > p.percentage-text {
 }
 
 .vote-reason {
-    font-size: 1.2rem;
+    font-size: 1.2em;
 }

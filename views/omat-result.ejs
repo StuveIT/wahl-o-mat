@@ -5,25 +5,29 @@
     <title><%= title %> Resultat</title>
     <link rel="stylesheet" href="/filehost/css/qacard.css">
     <link rel="stylesheet" href="/filehost/css/omat-result.css">
-
-    <script>
-        const appAnswers = <%- JSON.stringify(answers) %>;
-        const appWeights = <%- JSON.stringify(weights) %>;
-    </script>
 </head>
 <body>
     <%- include('partials/header') %>
     <main>
         <div class="card">
-            <h1>Dein <%= title %>-Ergebnis</h1>
-            Klicke auf die Parteien, um mehr über ihre Positionen zu erfahren.
+            <div class="card-header">
+                <h1 class="card-header-title">Dein <%= title %>-Ergebnis</h1>
+
+                <div class="card-header-buttons">
+                    <!-- Share Button -->
+                    <button class="card-header-button share-button" onclick="share()">
+                        <img src="/filehost/img/share.svg" alt="Teilen">
+                    </button>
+                </div>
+            </div>
+            <p class="card-description">Klicke auf die Parteien, um mehr über ihre Positionen zu erfahren.</p>
 
             <div id="result">
-                <!-- Filled by script -->
+                <%- include('partials/result') %>
             </div>
         </div>
+        <div id="card-clone"></div>
     </main>
     <%- include('partials/footer') %>
 </body>
-<script src="/filehost/js/omat-result-logic.js"></script>
 </html>

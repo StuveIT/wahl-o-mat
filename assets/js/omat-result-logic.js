@@ -18,12 +18,10 @@ const valueGrid = [
     [0, 1, 2]
 ]
 
-async function main() {
-    const resultContainer = document.getElementById('result');
-    resultContainer.classList.toggle('loading', true);
+let parties;
+let theses;
 
-    let parties = await fetchParties();
-    let theses = await fetchTheses();
+async function computeResults() {
 
     let pointGrid = [];
 
@@ -37,7 +35,7 @@ async function main() {
 
         // if the user skipped the question, the row should be 0
         if (userAnswer == null) {
-            for(let col = 0; col < parties.length; col++) {
+            for (let col = 0; col < parties.length; col++) {
                 pointGrid[row][col] = 0;
             }
 
@@ -64,9 +62,9 @@ async function main() {
 
     // calculate column sums
     pointGrid[lastRow + 1] = [];
-    for(let col = 0; col < parties.length + 1; col++) { // + 1 for the max value
+    for (let col = 0; col < parties.length + 1; col++) { // + 1 for the max value
         let sum = 0;
-        for(let row = 0; row < theses.length; row++) {
+        for (let row = 0; row < theses.length; row++) {
             sum += pointGrid[row][col];
         }
 
@@ -75,7 +73,7 @@ async function main() {
 
     // calculate the percentage of the user and party combination
     let results = [];
-    for(let col = 0; col < parties.length; col++) {
+    for (let col = 0; col < parties.length; col++) {
         let sum = pointGrid[lastRow + 1][col];
         let max = pointGrid[lastRow + 1][parties.length];
 
@@ -100,6 +98,19 @@ async function main() {
     // sort the parties by the percentage
     results.sort((a, b) => b.percentage - a.percentage);
 
+    return results;
+}
+
+let results;
+
+async function main() {
+    const resultContainer = document.getElementById('result');
+    resultContainer.classList.toggle('loading', true);
+
+    parties = await fetchParties();
+    theses = await fetchTheses();
+    results = await computeResults();
+    
     // render results
     results.forEach(result => {
         const party = result.party;
@@ -131,7 +142,7 @@ async function main() {
         percentagePara.classList.add('percentage-text');
         percentagePara.innerText = percentageText;
         percentageContainer.appendChild(percentagePara);
-        
+
         partySummary.appendChild(percentageContainer);
 
         partyContainer.appendChild(partySummary);
@@ -146,7 +157,7 @@ async function main() {
             const voteThesisTitle = document.createElement('h4');
             voteThesisTitle.innerText = theses[index].title;
             voteAnswer.appendChild(voteThesisTitle);
-            switch(Number(vote.answer)) {
+            switch (Number(vote.answer)) {
                 case 0:
                     voteAnswer.classList.add('positive');
                     break;
@@ -180,3 +191,13 @@ async function main() {
 }
 
 main();
+
+async function share() {
+    await fetch('/api/share', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(results)
+    });
+}

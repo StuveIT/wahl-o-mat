@@ -5,10 +5,10 @@ input, textarea, div.dropdown {
     
     color: var(--text);
 
-    padding: 1rem;
+    padding: 1em;
 
     font-family: 'Ubuntu', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1,1em;
 }
 
 button {
@@ -16,10 +16,10 @@ button {
     border-radius: var(--border-radius);
 
     background-color: var(--primary);
-    padding: 1rem;
-    font-size: 1.2rem;
+    padding: 1em;
+    font-size: 1.1em;
 
-    margin: 1rem 0;
+    margin: 1em 0;
 }
 
 button:hover {
@@ -27,115 +27,12 @@ button:hover {
     background-color: var(--secondary);
 }
 
-div.dropdown {
-    position: relative;
-    display: inline-block;
-    padding: 0;
-
-    min-width: 10rem;
-}
-
-div.dropdown:hover {
-    cursor: pointer;
-    background-color: var(--primary);
-}
-
-div.dropdown button {
-    background-color: transparent;
-    border: none;
-    padding: 1rem;
-    margin: 0;
-
-    width: 100%;
-    height: 100%;
-}
-
-div.dropdown button::after {
-    content: '▼';
-    margin-left: .5rem;
-}
-
-div.dropdown .dropdown-content {
-    display: none;
-    position: absolute;
-
-    width: 100%;
-    overflow-x: hidden;
-
-    background-color: var(--secondary);
-
-    border: 2px solid #ccc;
-    border-top: 0;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-
-    max-height: 50vh;
-    overflow-y: scroll;
-
-    z-index: 101;
-}
-
-div.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-div.dropdown .dropdown-content * {
-    display: block;
-    margin: 0;
-    width: 100%;
-    border: none;
-
-    overflow-x: hidden;
-}
-
-div.dropdown .dropdown-content * {
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-
-    padding: .5rem;
-
-    font-size: 1rem;
-    font-weight: var(--normal-weight);
-}
-
-div.dropdown .dropdown-content *:hover {
-    background-color: var(--primary);
-    cursor: pointer;
-}
-
-div.dropdown .dropdown-content *.selected, div.multiselect .dropdown-content > div:has(input:checked) {
-    background-color: var(--primary);
-}
-
-div.multiselect > .dropdown-content div {
-    display: flex;
-    flex-direction: row-reverse;
-    user-select: none;
-
-    justify-content: space-between;
-}
-
-div.multiselect input {
-    min-width: 1rem;
-    flex: 0;
-}
-
-div.multiselect label {
-    margin: 0;
-    padding: 0;
-
-    cursor: pointer;
-    user-select: none;
-    flex: 1;
-
-    font-weight: inherit;
-}
-
 .checkbox {
     display: flex;
     flex-direction: row;
     align-items: start;
 
-    padding: 0 2rem;
+    padding: 0 2em;
 }
 
 .checkbox.inactive {
@@ -153,12 +50,12 @@ div.multiselect label {
 .checkmark {
     border: 2px solid var(--accent);
     background-color: var(--secondary);
-    min-height: 1.8rem;
-    height: 1.8rem;
-    min-width: 1.8rem;
-    width: 1.8rem;
+    min-height: 1.8em;
+    height: 1.8em;
+    min-width: 1.8em;
+    width: 1.8em;
 
-    margin: 4px 1rem 0 0;
+    margin: 4px 1em 0 0;
 }
 
 .checkbox:not(.inactive) > input[type="checkbox"]:checked ~ .checkmark {

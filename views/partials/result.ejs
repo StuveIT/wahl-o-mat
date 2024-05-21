@@ -1,0 +1,19 @@
+<% for (result of results) { %>
+    <details class="party">
+        <summary><%- result.party.party %>
+            <div class="percentage-container">
+                <span class="percentage" style="width: <%= result.percentage * 100 %>%;"></span>
+                <p class="percentage-text"><%= (result.percentage * 100) - (result.percentage * 100) % 1 %>%</p>
+            </div>
+        </summary>
+        <% for (let i = 0; i < result.votes.length; i++) { %>
+            <% vote = result.votes[i]; %>
+            <div class="vote">
+                <div class="vote-answer <%= vote.answer == 0 ? "positive" : (vote.answer == 1 ? "neutral" : "negative") %>">
+                    <h4><%= theses[i].title %></h4>
+                </div>
+                <p class="vote-reason"><%= vote.reason %></p>
+            </div>
+        <% } %>
+    </details>
+<% } %>
