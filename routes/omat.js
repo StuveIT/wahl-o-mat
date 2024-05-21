@@ -21,12 +21,15 @@ router.get('/overview', (req, res) => {
 });
 
 router.get('/result', (req, res) => {
-    const answers = convertAnswerString(req.query.answers);
-    const weights = convertWeights(req.query.weights);
+    const answersString = req.query.answers;
+    const answers = convertAnswerString(answersString);
+
+    const weightsString = req.query.weights;
+    const weights = convertWeights(weightsString);
 
     const results = computeResult(answers, weights);
 
-    res.render('omat-result', { title: TITLE, results: results, theses: fetchTheses() });
+    res.render('omat-result', { title: TITLE, results: results, theses: fetchTheses(), answers: answersString, weights: weightsString });
 });
 
 module.exports = router
