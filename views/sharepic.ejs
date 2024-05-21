@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <link id="color-mode" rel="stylesheet" href="<%= serverUrl %>/filehost/css/root.css">
+    <link rel="stylesheet" href="<%= serverUrl %>/filehost/css/style.css">
+    <link rel="stylesheet" href="<%= serverUrl %>/filehost/css/qacard.css">
+    <link rel="stylesheet" href="<%= serverUrl %>/filehost/css/omat-result.css">
+</head>
+<body>
+    <div style="width: 100%; padding: 2em;">
+        <div class="card-header">
+            <h1 class="card-header-title"><%= title %></h1>
+            <h2><%= subtitle %></h2>
+        </div>
+
+        <p></p>
+
+        <div id="result">
+            <%- include('partials/result') %>
+        </div>
+    </div>
+</body>
+</html>

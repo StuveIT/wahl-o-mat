@@ -22,9 +22,17 @@ button {
     margin: 1em 0;
 }
 
+button:disabled {
+    background-color: var(--secondary);
+}
+
 button:hover {
     cursor: pointer;
     background-color: var(--secondary);
+}
+
+button:disabled:hover {
+    cursor: not-allowed;
 }
 
 .checkbox {

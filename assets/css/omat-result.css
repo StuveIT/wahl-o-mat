@@ -28,6 +28,13 @@ p.card-description {
 
 .share-button {
     margin: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.share-button > img {
+    min-width: 24px;
+    width: 1.8em;
 }
 
 #result {
