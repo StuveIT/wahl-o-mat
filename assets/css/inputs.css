@@ -8,7 +8,6 @@ input, textarea, div.dropdown {
     padding: 1em;
 
     font-family: 'Ubuntu', sans-serif;
-    font-size: 1,1em;
 }
 
 button {
@@ -17,9 +16,10 @@ button {
 
     background-color: var(--primary);
     padding: 1em;
-    font-size: 1.1em;
 
     margin: 1em 0;
+
+    font-size: .8em;
 }
 
 button:disabled {
@@ -78,7 +78,7 @@ button:disabled:hover {
     content: '2x';
 }
 
-.checkboxi:not(.inactive):hover input ~ .checkmark {
+.checkbox:not(.inactive):hover input ~ .checkmark {
     background-color: var(--primary);
 }
 
