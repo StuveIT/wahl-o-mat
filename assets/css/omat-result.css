@@ -56,7 +56,6 @@ p.card-description {
 
 #result > details.party > summary {
     font-weight: var(--bold-weight);
-    font-size: 1.2em;
 
     cursor: pointer;
 }
@@ -128,8 +127,4 @@ div.percentage-container > p.percentage-text {
 
 .vote-answer.negative > p {
     color: var(--negative);
-}
-
-.vote-reason {
-    font-size: 1.2em;
 }

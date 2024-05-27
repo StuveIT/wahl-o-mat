@@ -22,26 +22,28 @@
                     <!-- Filled by script -->
                 </ul>
             </section>
-            <div class="qa card">
-                <div class="qa-grid">
-                    <!-- Filled by script -->
+            <section class="qa">
+                <div class="card">
+                    <div class="qa-grid">
+                        <!-- Filled by script -->
+                    </div>
+                    
+                    <small>Wähle eine Antwortmöglichkeit aus:</small>
+                    
+                    <div class="qa-answers">
+                        <button onclick="answer(0)" class="qa-answer-btn <% if (answers[current] == 0) { %>
+                            selected
+                        <% } %>" id="positive">Stimme zu</button>
+                        <button onclick="answer(1)" class="qa-answer-btn <% if (answers[current] == 1) { %>
+                            selected
+                        <% } %>" id="neutral">Neutral</button>
+                        <button onclick="answer(2)" class="qa-answer-btn <% if (answers[current] == 2) { %>
+                            selected
+                        <% } %>" id="negative">Stimme nicht zu</button>
+                    </div>
+                    <button class="link-block" onclick="answer(null)">These überspringen</a>
                 </div>
-                
-                <small>Wähle eine Antwortmöglichkeit aus:</small>
-                
-                <div class="qa-answers">
-                    <button onclick="answer(0)" class="qa-answer-btn <% if (answers[current] == 0) { %>
-                        selected
-                    <% } %>" id="positive">Stimme zu</button>
-                    <button onclick="answer(1)" class="qa-answer-btn <% if (answers[current] == 1) { %>
-                        selected
-                    <% } %>" id="neutral">Neutral</button>
-                    <button onclick="answer(2)" class="qa-answer-btn <% if (answers[current] == 2) { %>
-                        selected
-                    <% } %>" id="negative">Stimme nicht zu</button>
-                </div>
-                <button class="link-block" onclick="answer(null)">These überspringen</a>
-            </div>
+            </section>
         </div>
     </main>
     <%- include('partials/footer') %>
