@@ -24,6 +24,7 @@ router.get('/theses', (req, res) => {
     res.json(theses);
 });
 
+/*
 router.get('/sharepic', async (req, res) => {
     const answers = convertAnswerString(req.query.answers);
     const weights = convertWeights(req.query.weights);
@@ -49,6 +50,6 @@ router.get('/sharepic', async (req, res) => {
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
-});
+}); */
 
 module.exports = router;

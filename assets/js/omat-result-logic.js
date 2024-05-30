@@ -17,7 +17,7 @@ fetch('/api/sharepic?answers=' + answers + '&weights=' + weights).then(response 
     shareButton.onclick = share;
 });
 
-async function share() {
+/* async function share() {
     if(blob == null) {
         alert('Fehler beim Erstellen des Bildes.');
         return;
@@ -29,4 +29,4 @@ async function share() {
     a.href = url;
     a.download = 'omat.png';
     a.click();
-}
+} */
