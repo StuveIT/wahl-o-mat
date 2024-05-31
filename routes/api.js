@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const ejs = require('ejs');
+const fs = require('fs');
 
 const fetchParties = require('../utils/parties');
 const fetchTheses = require('../utils/theses');
@@ -22,6 +23,34 @@ router.get('/parties', (req, res) => {
 
 router.get('/theses', (req, res) => {
     res.json(theses);
+});
+
+router.get('/usercount', (req, res) => {
+    // open file
+    const data = fs.readFileSync('data/usercounter.json');
+    const json = JSON.parse(data);
+
+    // send response
+    res.json({ count: json.userCounter });
+});
+
+router.post('/usercount', (req, res) => {
+    // open file
+    const data = fs.readFileSync('data/usercounter.json');
+    const json = JSON.parse(data);
+
+    // increment counter
+    json.userCounter++;
+
+    // save
+    fs.writeFile('data/usercounter.json', JSON.stringify(json), (err) => {
+        if (err) {
+            console.log(err);
+        }
+    });
+
+    // send response
+    res.json({ count: json.userCounter });
 });
 
 /*
