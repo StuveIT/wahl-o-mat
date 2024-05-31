@@ -1,4 +1,4 @@
-const shareButton = document.querySelector('.share-button');
+/*const shareButton = document.querySelector('.share-button');
 
 let blob;
 fetch('/api/sharepic?answers=' + answers + '&weights=' + weights).then(response => response.blob()).then(data => {
@@ -17,7 +17,7 @@ fetch('/api/sharepic?answers=' + answers + '&weights=' + weights).then(response 
     shareButton.onclick = share;
 });
 
-/* async function share() {
+async function share() {
     if(blob == null) {
         alert('Fehler beim Erstellen des Bildes.');
         return;
@@ -30,3 +30,8 @@ fetch('/api/sharepic?answers=' + answers + '&weights=' + weights).then(response 
     a.download = 'omat.png';
     a.click();
 } */
+
+// increment user counter
+setTimeout(() => {
+    incrementUserCounter();
+}, 1000);
