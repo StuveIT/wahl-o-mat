@@ -1,15 +1,13 @@
 services:
   db:
     image: postgres:latest
-    restart: always
+    env_file:
+      - ../.env
     ports:
       - "6543:5432"
-    environment:
-      POSTGRES_DB: SomeDatabase
-      POSTGRES_USER: SomeUser
-      POSTGRES_PASSWORD: SomePassword
     volumes:
       - ./pgdata:/var/lib/postgresql/data 
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
 volumes:
   pgdata:

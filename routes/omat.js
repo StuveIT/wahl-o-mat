@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     const answers = convertAnswerString(req.query.edit);
     const thesisNumber = Number.parseInt(req.query.thesis) - 1;
 
+    req.session.startedAt = new Date();
 
     res.render('omat', { title: TITLE, answers: answers, current: thesisNumber });
 })
@@ -31,7 +32,11 @@ router.get('/result', async (req, res) => {
 
     const results = computeResult(answers, weights);
 
-    res.render('omat-result', { title: TITLE, results: results, theses: fetchTheses(), answers: answersString, weights: weightsString });
+    if (req.session.passedThreshold) {
+        req.session.finished = true;
+    }
+        
+    res.render('omat-result', { title: TITLE, results: results, theses: fetchTheses(), answers: answersString, weights: weightsString, showGiveaway: req.session.finished });
 });
 
 module.exports = router

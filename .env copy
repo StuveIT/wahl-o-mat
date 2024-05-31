@@ -1,7 +1,0 @@
-PORT=8080
-TITLE="Frag Wahltraut!"
-SUBTITLE="Infotool zur Uni-Wahl 2024"
-THESES_FILE=data/thesen.csv
-PARTIES_FILE=data/listen.csv
-
-SERVER_URL="https://wahl.stuve-uni-kn.de"
