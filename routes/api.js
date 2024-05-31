@@ -7,6 +7,9 @@ const fetchParties = require('../utils/parties');
 const fetchTheses = require('../utils/theses');
 const { convertAnswerString, convertWeights, computeResult } = require('../utils/omat');
 
+const database = require('../utils/database');
+const { validate } = require('deep-email-validator');
+
 const nodeHtmlToImage = require('node-html-to-image');
 
 require('dotenv').config();
@@ -35,6 +38,14 @@ router.get('/usercount', (req, res) => {
 });
 
 router.post('/usercount', (req, res) => {
+    if (!req.session.passedThreshold || !req.session.finished) {
+        res.status(400).json({ error: 'User did not spend enough time on the quiz' });
+        return;
+    }
+
+    // reset time
+    req.session.startedAt = new Date();
+    
     // open file
     const data = fs.readFileSync('data/usercounter.json');
     const json = JSON.parse(data);
@@ -52,6 +63,24 @@ router.post('/usercount', (req, res) => {
     // send response
     res.json({ count: json.userCounter });
 });
+
+/*
+router.post('/verlosung', async (req, res) => {
+    if (!req.session.finished) {
+        res.status(400).json({ error: 'User did not spend enough time on the quiz' });
+        return;
+    }
+
+    const email = req.body.email;
+
+    const response = database.insertEmail(req.session.id, email);
+    if(!response.success) {
+        res.status(400).json({ error: response.error });
+        return;
+    }
+   
+    res.json({ success: true });
+});*/
 
 /*
 router.get('/sharepic', async (req, res) => {
