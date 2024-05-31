@@ -18,7 +18,7 @@ app.use('/data', express.static('data')); // filehost
 app.get('/robots.txt', (req, res) => res.sendFile('robots.txt', { root: './' })); // robots.txt
 
 app.get('/', (req, res) => {
-    res.render('home', { title: TITLE })
+    res.render('home', { title: TITLE });
 });
 
 app.get('/%C3%BCber', (req, res) => {
@@ -36,6 +36,7 @@ app.get('/impressum', (req, res) => {
 // omat
 app.use('/omat', omatRouter);
 app.use('/api', apiRouter);
+
 
 // listen
 app.listen(PORT, () => {

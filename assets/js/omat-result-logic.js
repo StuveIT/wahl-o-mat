@@ -1,4 +1,4 @@
-const shareButton = document.querySelector('.share-button');
+/*const shareButton = document.querySelector('.share-button');
 
 let blob;
 fetch('/api/sharepic?answers=' + answers + '&weights=' + weights).then(response => response.blob()).then(data => {
@@ -29,4 +29,9 @@ async function share() {
     a.href = url;
     a.download = 'omat.png';
     a.click();
-}
+} */
+
+// increment user counter
+setTimeout(() => {
+    incrementUserCounter();
+}, 1000);

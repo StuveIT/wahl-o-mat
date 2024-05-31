@@ -9,15 +9,14 @@
     margin: 1rem 0 0 0;
 }
 
-.qa-sideflex > .qa.card {
+.qa-sideflex > .qa {
     flex: 4 1 0;
     min-width: 400px;
-    overflow: hidden;
 }
 
 .qa-sideflex > .qa-sidebar {
     flex: 1 1 0;
-    min-width: 200px;
+    min-width: 300px;
     overflow: hidden;
 }
 
@@ -33,6 +32,7 @@
 }
 
 .qa-sidebar .qa-thesis, .qa-sidebar a.qa-thesis {
+    width: 100%;
     margin: 0;
     margin-left: 1rem;
 
@@ -53,18 +53,18 @@
     background-color: transparent;
 }
 
-.qa.card .qa-grid {
+.qa-grid {
     display: grid;
 }
 
-.qa.card .qa-card-thesis.inactive {
+.qa-card-thesis.inactive {
     z-index: -1;
     transform: translateY(20%);
     opacity: 0;
     transition: opacity .2s ease-in-out, transform 1s ease-in-out;
 }
 
-.qa.card .qa-card-thesis {
+.qa-card-thesis {
     grid-column: 1;
     grid-row: 1;
 
@@ -72,8 +72,13 @@
     transition: opacity .8s ease-in-out, transform .4s ease-in-out;
 }
 
-.qa.card, .qa-sidebar {
+.qa, .qa-sidebar {
     margin: .5rem;
+}
+
+.qa .card {
+    position: relative;
+    z-index: 100;
 }
 
 .qa-answers {
