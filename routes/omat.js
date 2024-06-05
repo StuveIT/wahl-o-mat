@@ -35,6 +35,7 @@ router.get('/result', async (req, res) => {
     if (req.session.passedThreshold) {
         req.session.finished = true;
     }
+    req.session.startedAt = null;
         
     res.render('omat-result', { title: TITLE, results: results, theses: fetchTheses(), answers: answersString, weights: weightsString, showGiveaway: false });
 });
