@@ -35,10 +35,11 @@ app.use(session({
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-function checkTimeSpent(req, res, next) {
-    if (req.session.started) {
+app.use((req, res, next) => {
+    if (req.session.startedAt) {
         const now = new Date();
-        const diff = now - req.session.started;
+        const startedAt = new Date(req.session.startedAt);
+        const diff = now - startedAt;
 
         // if time spent is more than 30 seconds
         if (diff > 30000) {
@@ -48,8 +49,7 @@ function checkTimeSpent(req, res, next) {
         }
     }
     next();
-}
-app.use(checkTimeSpent);
+});
 
 app.set('view engine', 'ejs'); // view engine
 app.use('/filehost', express.static('assets')); //filehost
@@ -89,7 +89,6 @@ app.get('/impressum', (req, res) => {
 // omat
 app.use('/omat', omatRouter);
 app.use('/api', apiRouter);
-
 
 // listen
 app.listen(PORT, () => {
